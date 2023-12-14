@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button Events</title>
+  <script>
+    function buttonClick1() {
+      window.webkit.messageHandlers.onAdShow.postMessage()
+    }
+    
+    function buttonClick2() {
+      var id = "xxxx";
+      window.webkit.messageHandlers.onAdShow.postMessage(id);
+    }
+    
+    function buttonClick3() {
+       setTimeout(()=>{ window.webkit.messageHandlers.onAdShow.postMessage("xxx2"); }, 100);
+    }
+    
+    function pageLoaded() {
+      var id = "xxxx";
+      window.webkit.messageHandlers.onAdReqs.postMessage(id);
+
+      setTimeout(()=>{ window.webkit.messageHandlers.onAdReqs.postMessage("xxx2"); }, 100);
+
+    }
+  </script>
+</head>
+<body onload="pageLoaded()">
+  <button onclick="buttonClick1()">Button 1</button>
+  <button onclick="buttonClick2()">Button 2</button>
+  <button onclick="buttonClick3()">Button 3</button>
+</body>
+</html>
